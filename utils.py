@@ -17,7 +17,7 @@ def local_logger(transcript):
     with open(f"local_response{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}.log", "a") as f:
         f.write(str(transcript))
 
-
+# se requiere tener instalado FFMPEG en environment path
 def extract_audio(path_video, path_audio):
     import subprocess
 
