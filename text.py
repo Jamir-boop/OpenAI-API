@@ -21,5 +21,6 @@ def completion(request):
 with open("request.temp", "r", encoding="utf-8", errors="replace") as file:
     request = file.read()
     completion = completion(request)
-    
+
+# completion = completion("Hola mundo")
 # print(completion.choices[0].message)
