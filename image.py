@@ -1,6 +1,6 @@
 import os
 import openai
-from utils import log_completion
+from utils import response_log
 
 
 def imageCreation(request):
@@ -12,7 +12,7 @@ def imageCreation(request):
         n=10,
         size="1024x1024"
     )
-    log_completion(image)
+    response_log(image)
     return image
 
 
@@ -26,7 +26,7 @@ def imageEdit(pathImage, pathImageMask, prompt):
         n=2,
         size="1024x1024"
     )
-    log_completion(response)
+    response_log(response)
     return response
 
 
@@ -38,7 +38,7 @@ def imageVariation(pathImage):
         n=2,
         size="1024x1024"
     )
-    log_completion(image)
+    response_log(image)
     return image
 
 

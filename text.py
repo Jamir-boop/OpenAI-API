@@ -1,6 +1,6 @@
 import os
 import openai
-from utils import log_completion
+from utils import response_log
 
 openai.organization = os.getenv("PUBLIC_ORG")
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -14,10 +14,11 @@ def completion(request):
         ],
         temperature=0
     )
-    log_completion(completion)
+    response_log(completion)
     return completion
 
-
-completion = completion("Please make a minuta from this transcription ")
+with open("request.temp", "r", encoding="utf-8", errors="replace") as file:
+    request = file.read()
+    completion = completion(request)
+    
 # print(completion.choices[0].message)
-# procesos de facturacion, cuentas a pagar, area de finanzas, RRHH

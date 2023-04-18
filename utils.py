@@ -1,8 +1,9 @@
 import datetime
 import subprocess
+import re
 
 
-def response_log(response, remove_spaces):
+def response_log(response, remove_spaces=False):
     """
     Log the response to a file with a timestamp.
 
@@ -11,9 +12,11 @@ def response_log(response, remove_spaces):
     remove_spaces (bool): If True, remove spaces from the response.
     """
     response = ' '.join(str(response).strip().split('\n'))
-
+    
     if remove_spaces:
         response = response.replace(" ", "")
+    else:
+        response = re.sub(r'\s+', ' ', response)
 
     log_str = f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} {response}\n"
 
