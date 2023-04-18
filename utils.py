@@ -20,7 +20,7 @@ def response_log(response, remove_spaces=False):
 
     log_str = f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} {response}\n"
 
-    with open("response.log", "a") as f:
+    with open("response.log", "a", encoding="utf-8") as f:
         f.write(log_str)
 
 
@@ -31,9 +31,9 @@ def temp_log(transcript):
     Args:
     transcript (str): The transcript to log.
     """
-    log_filename = f"response{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
+    log_filename = f"logs/response{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
 
-    with open(log_filename, "a") as f:
+    with open(log_filename, "a", encoding="utf-8") as f:
         f.write(str(transcript))
 
 
