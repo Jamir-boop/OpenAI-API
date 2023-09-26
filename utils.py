@@ -1,6 +1,19 @@
 import datetime
 import subprocess
 import re
+import os
+
+
+def ensure_directory_exists(directory_path):
+    """
+    Ensure that a directory exists. If it doesn't, create it.
+
+    Args:
+    directory_path (str): Path to the directory.
+    """
+    if directory_path and not os.path.exists(directory_path):
+        os.makedirs(directory_path)
+
 
 
 def response_log(response, remove_spaces=False):
@@ -16,11 +29,14 @@ def response_log(response, remove_spaces=False):
     if remove_spaces:
         response = response.replace(" ", "")
     else:
-        response = re.sub(r'\s+', ' ', response)
+        response = re.sub(r'\s+', ' ', response)    
 
     log_str = f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} {response}\n"
+    log_file_path = "response.log"
+    
+    ensure_directory_exists(os.path.dirname(log_file_path))
 
-    with open("response.log", "a", encoding="utf-8") as f:
+    with open(log_file_path, "a", encoding="utf-8") as f:
         f.write(log_str)
 
 
@@ -31,7 +47,10 @@ def temp_log(transcript):
     Args:
     transcript (str): The transcript to log.
     """
-    log_filename = f"logs/response{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
+    log_directory = "logs"
+    log_filename = f"{log_directory}/response{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
+    
+    ensure_directory_exists(log_directory)
 
     with open(log_filename, "a", encoding="utf-8") as f:
         f.write(str(transcript))
@@ -47,5 +66,3 @@ def extract_audio(path_video, path_audio):
     """
     subprocess.run(['ffmpeg', '-i', path_video, '-vn',
                    '-acodec', 'copy', path_audio])
-
-# extract_audio("C:/Users/Jeiser Vargas/Videos/2023-04-04_11-43-58.mkv", "C:/Users/Jeiser Vargas/Downloads/audio.m4a")
