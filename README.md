@@ -51,3 +51,17 @@ This repository provides functionality to interact with various OpenAI services 
 
 ### Getting Started
 1. Clone the repository.
+git clone https://github.com/Jamir-boop/OpenAI-API.git
+cd ./OpenAI-API/
+2. Install the required packages from `requirements.txt`.
+3. Set up your environment variables with your OpenAI API key and other configurations.
+4. Run the desired script.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+<hr>
+
+### Screenshots
+<!-- Add your screenshots here -->
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
