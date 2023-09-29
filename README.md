@@ -59,9 +59,5 @@ cd ./OpenAI-API/
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 <hr>
-
-### Screenshots
-<!-- Add your screenshots here -->
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
